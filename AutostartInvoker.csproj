@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Platforms>AnyCPU</Platforms>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
+		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<StartupObject>Program</StartupObject>
+		<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+		<Title>Autostart Invoker</Title>
+		<Copyright>AutostartInvoker/GPL-3.0-or-later</Copyright>
+		<Authors>QZLin</Authors>
+		<Description>Invoke autostart programs manually</Description>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackAsTool>True</PackAsTool>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
+
+	<ItemGroup>
+		<Content Include="icon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="readme.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>

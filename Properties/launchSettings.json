@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AutostartInvoker": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
