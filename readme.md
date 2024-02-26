@@ -8,4 +8,4 @@ This program make you invoke autostart program manually easily
 autostartinvoker.exe <Match String>
 ```
 
-If only one entry is matched
+If only one entry is matched, the program will be called.

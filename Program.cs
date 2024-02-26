@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 internal class Program
 {
-    public static class Utils
+    public static class Util
     {
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         private struct STARTUPINFO
@@ -99,7 +99,7 @@ internal class Program
             return runs;
         }
 
-        public static void Invoker(string args) => CreateProcessFromCommandLine(args);
+        public static void Invoker(string cmdLine) => CreateProcessFromCommandLine(cmdLine);
     }
 
 
@@ -109,9 +109,9 @@ internal class Program
         Console.WriteLine($">>>{match}");
         var dict = new Dictionary<string, string>();
         var matched = new Dictionary<string, string>();
-        foreach (var (key, value) in Utils.RegRun())
+        foreach (var (key, value) in Util.RegRun())
             dict.Add(key, value);
-        foreach (var (key, value) in Utils.AppFolder())
+        foreach (var (key, value) in Util.AppFolder())
             dict.Add(key, value);
 
         foreach (var (key, value) in dict)
@@ -122,18 +122,31 @@ internal class Program
         }
 
 
-        if (matched.Count > 1)
+        if (matched.Count > 1) { 
             Console.WriteLine($"Matches: {matched.Count}");
+            Environment.Exit(2);
+            return;
+        }
         else if (matched.Count == 1)
         {
             foreach (var (key, value) in matched)
             {
                 Console.WriteLine($"Invoking [{key}]...");
                 Console.WriteLine($"{value}");
-                Utils.Invoker(value);
+                Util.Invoker(value);
+                Environment.Exit(0);
+                return;
             }
         }
         else if (matched.Count == 0)
+        {
             Console.WriteLine("No matched entry found");
+            Environment.Exit(1);
+            return;
+        }
+        Environment.Exit(-1);
+        return;
+
+        
     }
 }
